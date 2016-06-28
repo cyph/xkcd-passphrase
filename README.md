@@ -2,9 +2,9 @@
 
 ## Overview
 
-A passphrase generator inspired by xkcd #936, designed to provide a high level of
-security and memorability. By default, passwords are generated with strength
-equivalent to a random 128-bit key.
+A passphrase generator inspired by [xkcd #936](https://xkcd.com/936), designed
+to provide a high level of security and memorability. By default, passwords are
+generated with strength equivalent to a random 128-bit key.
 
 Usage caveats:
 
@@ -12,8 +12,8 @@ Usage caveats:
 regenerate and cycle through them until they find ones they like, the level of
 security provided drops _substantially_.
 
-* While the architecture has been vetted by [Cure53](/cure53), the code itself has
-not yet been audited. Use at your own risk.
+* While the architecture has been vetted by [Cure53](https://cure53.de), the code
+itself has not yet been audited. Use at your own risk.
 
 ## Example Usage
 
@@ -29,7 +29,7 @@ not yet been audited. Use at your own risk.
 	xkcdPassphrase.generate(512);
 	/*
 	 * shambles knifes homology reasonableness bunker discriminator motility dejects
-	 * angelica blackout bands transients cheeseburger lubricious vents puny smock
+	 * angelica blackout bands transients cheeseburger lubricious vents puny smock
 	 * layering bastardise watched savannah ergonomically casual ratify comprehending
 	 * wholeheartedly ruralist evocations entitled braziers arrester interlock
 	 */ 
