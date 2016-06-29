@@ -43,6 +43,7 @@ function processWordList (wordList) {
 		cachedWordLists[k]	= {
 			buffer: Module._malloc(wordList.length * 4),
 			length: wordList.length,
+			lengthsBuffer: Module._malloc(wordList.length * 4),
 			maxWordLength: wordList.reduce(function (a, b) {
 				return Math.max(a, b.length);
 			}, 0)
@@ -57,6 +58,15 @@ function processWordList (wordList) {
 				})).buffer
 			),
 			cachedWordLists[k].buffer
+		);
+
+		Module.writeArrayToMemory(
+			new Uint8Array(
+				new Uint32Array(wordList.map(function (s) {
+					return s.length;
+				})).buffer
+			),
+			cachedWordLists[k].lengthsBuffer
 		);
 	}
 
@@ -100,6 +110,7 @@ var xkcdPassphrase	= {
 				numWords,
 				randomValuesBuffer,
 				wordListData.buffer,
+				wordListData.lengthsBuffer,
 				wordListData.length,
 				wordListData.maxWordLength
 			);
@@ -131,3 +142,6 @@ if (isNode) {
 else {
 	self.xkcdPassphrase	= xkcdPassphrase;
 }
+
+
+}());

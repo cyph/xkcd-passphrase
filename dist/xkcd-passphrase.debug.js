@@ -1,10 +1,13 @@
+(function () {
+	
+	
 var isNode	= false;
 if (typeof module !== 'undefined' && module.exports) {
 	isNode	= true;
 }
 
 
-var xkcdPassphrase = (function () { 
+var xkcdPassphrase = (function () {
 
 function memzero(bytes) { if (! bytes instanceof Uint8Array) { throw new TypeError("Only Uint8Array instances can be wiped"); } for (var i = 0 | 0, j = bytes.length; i < j; i++) { bytes[i] = 0; } }
 // The Module object: Our interface to the outside world. We import
@@ -2613,109 +2616,115 @@ function getTempRet0() {
   return tempRet0|0;
 }
 
-function _generate($password,$numWords,$randomValues,$wordList,$wordListLength,$maxWordLength) {
+function _generate($password,$numWords,$randomValues,$wordList,$wordLengths,$wordListLength,$maxWordLength) {
  $password = $password|0;
  $numWords = $numWords|0;
  $randomValues = $randomValues|0;
  $wordList = $wordList|0;
+ $wordLengths = $wordLengths|0;
  $wordListLength = $wordListLength|0;
  $maxWordLength = $maxWordLength|0;
- var $0 = 0, $1 = 0, $10 = 0, $11 = 0, $12 = 0, $13 = +0, $14 = +0, $15 = +0, $16 = 0, $17 = +0, $18 = +0, $19 = 0, $2 = 0, $20 = 0, $21 = 0, $22 = 0, $23 = 0, $24 = 0, $25 = 0, $26 = 0;
+ var $0 = 0, $1 = 0, $10 = 0, $11 = 0, $12 = 0, $13 = 0, $14 = +0, $15 = +0, $16 = +0, $17 = 0, $18 = +0, $19 = +0, $2 = 0, $20 = 0, $21 = 0, $22 = 0, $23 = 0, $24 = 0, $25 = 0, $26 = 0;
  var $27 = 0, $28 = 0, $29 = 0, $3 = 0, $30 = 0, $31 = 0, $32 = 0, $33 = 0, $34 = 0, $35 = 0, $36 = 0, $37 = 0, $38 = 0, $39 = 0, $4 = 0, $40 = 0, $41 = 0, $42 = 0, $43 = 0, $44 = 0;
- var $45 = 0, $46 = 0, $47 = 0, $48 = 0, $49 = 0, $5 = 0, $50 = 0, $51 = 0, $52 = 0, $53 = 0, $54 = 0, $55 = 0, $56 = 0, $57 = 0, $58 = 0, $59 = 0, $6 = 0, $60 = 0, $61 = 0, $7 = 0;
- var $8 = 0, $9 = 0, $i = 0, $j = 0, $passwordLength = 0, $word = 0, $wordLength = 0, label = 0, sp = 0;
+ var $45 = 0, $46 = 0, $47 = 0, $48 = 0, $49 = 0, $5 = 0, $50 = 0, $51 = 0, $52 = 0, $53 = 0, $54 = 0, $55 = 0, $56 = 0, $57 = 0, $58 = 0, $59 = 0, $6 = 0, $60 = 0, $61 = 0, $62 = 0;
+ var $63 = 0, $64 = 0, $65 = 0, $7 = 0, $8 = 0, $9 = 0, $i = 0, $index = 0, $j = 0, $passwordLength = 0, $word = 0, $wordLength = 0, label = 0, sp = 0;
  sp = STACKTOP;
- STACKTOP = STACKTOP + 48|0;
+ STACKTOP = STACKTOP + 64|0;
  $0 = $password;
  $1 = $numWords;
  $2 = $randomValues;
  $3 = $wordList;
- $4 = $wordListLength;
- $5 = $maxWordLength;
+ $4 = $wordLengths;
+ $5 = $wordListLength;
+ $6 = $maxWordLength;
  $passwordLength = 0; //@line 16 "xkcd-passphrase.c"
  $i = 0; //@line 18 "xkcd-passphrase.c"
  while(1) {
-  $6 = $i; //@line 18 "xkcd-passphrase.c"
-  $7 = $1; //@line 18 "xkcd-passphrase.c"
-  $8 = ($6|0)<($7|0); //@line 18 "xkcd-passphrase.c"
-  if (!($8)) {
+  $7 = $i; //@line 18 "xkcd-passphrase.c"
+  $8 = $1; //@line 18 "xkcd-passphrase.c"
+  $9 = ($7|0)<($8|0); //@line 18 "xkcd-passphrase.c"
+  if (!($9)) {
    break;
   }
-  $9 = $i; //@line 20 "xkcd-passphrase.c"
-  $10 = $2; //@line 20 "xkcd-passphrase.c"
-  $11 = (($10) + ($9<<2)|0); //@line 20 "xkcd-passphrase.c"
-  $12 = HEAP32[$11>>2]|0; //@line 20 "xkcd-passphrase.c"
-  $13 = (+($12>>>0)); //@line 20 "xkcd-passphrase.c"
-  $14 = +HEAPF64[8>>3]; //@line 20 "xkcd-passphrase.c"
-  $15 = $13 / $14; //@line 20 "xkcd-passphrase.c"
-  $16 = $4; //@line 20 "xkcd-passphrase.c"
-  $17 = (+($16|0)); //@line 20 "xkcd-passphrase.c"
-  $18 = $15 * $17; //@line 20 "xkcd-passphrase.c"
-  $19 = (~~(($18))); //@line 20 "xkcd-passphrase.c"
-  $20 = $3; //@line 19 "xkcd-passphrase.c"
-  $21 = (($20) + ($19<<2)|0); //@line 19 "xkcd-passphrase.c"
-  $22 = HEAP32[$21>>2]|0; //@line 19 "xkcd-passphrase.c"
-  $word = $22; //@line 19 "xkcd-passphrase.c"
-  $23 = $word; //@line 23 "xkcd-passphrase.c"
-  $24 = (_strlen($23)|0); //@line 23 "xkcd-passphrase.c"
-  $wordLength = $24; //@line 23 "xkcd-passphrase.c"
-  $j = 0; //@line 25 "xkcd-passphrase.c"
+  $10 = $i; //@line 19 "xkcd-passphrase.c"
+  $11 = $2; //@line 19 "xkcd-passphrase.c"
+  $12 = (($11) + ($10<<2)|0); //@line 19 "xkcd-passphrase.c"
+  $13 = HEAP32[$12>>2]|0; //@line 19 "xkcd-passphrase.c"
+  $14 = (+($13>>>0)); //@line 19 "xkcd-passphrase.c"
+  $15 = +HEAPF64[8>>3]; //@line 19 "xkcd-passphrase.c"
+  $16 = $14 / $15; //@line 19 "xkcd-passphrase.c"
+  $17 = $5; //@line 19 "xkcd-passphrase.c"
+  $18 = (+($17|0)); //@line 19 "xkcd-passphrase.c"
+  $19 = $16 * $18; //@line 19 "xkcd-passphrase.c"
+  $20 = (~~(($19))); //@line 19 "xkcd-passphrase.c"
+  $index = $20; //@line 19 "xkcd-passphrase.c"
+  $21 = $index; //@line 20 "xkcd-passphrase.c"
+  $22 = $3; //@line 20 "xkcd-passphrase.c"
+  $23 = (($22) + ($21<<2)|0); //@line 20 "xkcd-passphrase.c"
+  $24 = HEAP32[$23>>2]|0; //@line 20 "xkcd-passphrase.c"
+  $word = $24; //@line 20 "xkcd-passphrase.c"
+  $25 = $index; //@line 21 "xkcd-passphrase.c"
+  $26 = $4; //@line 21 "xkcd-passphrase.c"
+  $27 = (($26) + ($25<<2)|0); //@line 21 "xkcd-passphrase.c"
+  $28 = HEAP32[$27>>2]|0; //@line 21 "xkcd-passphrase.c"
+  $wordLength = $28; //@line 21 "xkcd-passphrase.c"
+  $j = 0; //@line 23 "xkcd-passphrase.c"
   while(1) {
-   $25 = $j; //@line 25 "xkcd-passphrase.c"
-   $26 = $5; //@line 25 "xkcd-passphrase.c"
-   $27 = ($25|0)<($26|0); //@line 25 "xkcd-passphrase.c"
-   if (!($27)) {
+   $29 = $j; //@line 23 "xkcd-passphrase.c"
+   $30 = $6; //@line 23 "xkcd-passphrase.c"
+   $31 = ($29|0)<($30|0); //@line 23 "xkcd-passphrase.c"
+   if (!($31)) {
     break;
    }
-   $28 = $passwordLength; //@line 26 "xkcd-passphrase.c"
-   $29 = (($28) + 2)|0; //@line 26 "xkcd-passphrase.c"
-   $passwordLength = $29; //@line 26 "xkcd-passphrase.c"
-   $30 = $j; //@line 28 "xkcd-passphrase.c"
-   $31 = $wordLength; //@line 28 "xkcd-passphrase.c"
-   $32 = ($30>>>0)<($31>>>0); //@line 28 "xkcd-passphrase.c"
-   if ($32) {
-    $33 = $j; //@line 29 "xkcd-passphrase.c"
-    $34 = $word; //@line 29 "xkcd-passphrase.c"
-    $35 = (($34) + ($33)|0); //@line 29 "xkcd-passphrase.c"
-    $36 = HEAP8[$35>>0]|0; //@line 29 "xkcd-passphrase.c"
-    $37 = $passwordLength; //@line 29 "xkcd-passphrase.c"
-    $38 = (($37) - 2)|0; //@line 29 "xkcd-passphrase.c"
-    $39 = $0; //@line 29 "xkcd-passphrase.c"
-    $40 = (($39) + ($38)|0); //@line 29 "xkcd-passphrase.c"
-    HEAP8[$40>>0] = $36; //@line 29 "xkcd-passphrase.c"
-    $41 = $passwordLength; //@line 30 "xkcd-passphrase.c"
-    $42 = (($41) - 1)|0; //@line 30 "xkcd-passphrase.c"
-    $passwordLength = $42; //@line 30 "xkcd-passphrase.c"
+   $32 = $passwordLength; //@line 24 "xkcd-passphrase.c"
+   $33 = (($32) + 2)|0; //@line 24 "xkcd-passphrase.c"
+   $passwordLength = $33; //@line 24 "xkcd-passphrase.c"
+   $34 = $j; //@line 26 "xkcd-passphrase.c"
+   $35 = $wordLength; //@line 26 "xkcd-passphrase.c"
+   $36 = ($34|0)<($35|0); //@line 26 "xkcd-passphrase.c"
+   if ($36) {
+    $37 = $j; //@line 27 "xkcd-passphrase.c"
+    $38 = $word; //@line 27 "xkcd-passphrase.c"
+    $39 = (($38) + ($37)|0); //@line 27 "xkcd-passphrase.c"
+    $40 = HEAP8[$39>>0]|0; //@line 27 "xkcd-passphrase.c"
+    $41 = $passwordLength; //@line 27 "xkcd-passphrase.c"
+    $42 = (($41) - 2)|0; //@line 27 "xkcd-passphrase.c"
+    $43 = $0; //@line 27 "xkcd-passphrase.c"
+    $44 = (($43) + ($42)|0); //@line 27 "xkcd-passphrase.c"
+    HEAP8[$44>>0] = $40; //@line 27 "xkcd-passphrase.c"
+    $45 = $passwordLength; //@line 28 "xkcd-passphrase.c"
+    $46 = (($45) - 1)|0; //@line 28 "xkcd-passphrase.c"
+    $passwordLength = $46; //@line 28 "xkcd-passphrase.c"
    } else {
-    $43 = $word; //@line 33 "xkcd-passphrase.c"
-    $44 = HEAP8[$43>>0]|0; //@line 33 "xkcd-passphrase.c"
-    $45 = $passwordLength; //@line 33 "xkcd-passphrase.c"
-    $46 = (($45) - 1)|0; //@line 33 "xkcd-passphrase.c"
-    $47 = $0; //@line 33 "xkcd-passphrase.c"
-    $48 = (($47) + ($46)|0); //@line 33 "xkcd-passphrase.c"
-    HEAP8[$48>>0] = $44; //@line 33 "xkcd-passphrase.c"
-    $49 = $passwordLength; //@line 34 "xkcd-passphrase.c"
-    $50 = (($49) - 2)|0; //@line 34 "xkcd-passphrase.c"
-    $passwordLength = $50; //@line 34 "xkcd-passphrase.c"
+    $47 = $word; //@line 31 "xkcd-passphrase.c"
+    $48 = HEAP8[$47>>0]|0; //@line 31 "xkcd-passphrase.c"
+    $49 = $passwordLength; //@line 31 "xkcd-passphrase.c"
+    $50 = (($49) - 1)|0; //@line 31 "xkcd-passphrase.c"
+    $51 = $0; //@line 31 "xkcd-passphrase.c"
+    $52 = (($51) + ($50)|0); //@line 31 "xkcd-passphrase.c"
+    HEAP8[$52>>0] = $48; //@line 31 "xkcd-passphrase.c"
+    $53 = $passwordLength; //@line 32 "xkcd-passphrase.c"
+    $54 = (($53) - 2)|0; //@line 32 "xkcd-passphrase.c"
+    $passwordLength = $54; //@line 32 "xkcd-passphrase.c"
    }
-   $51 = $j; //@line 25 "xkcd-passphrase.c"
-   $52 = (($51) + 1)|0; //@line 25 "xkcd-passphrase.c"
-   $j = $52; //@line 25 "xkcd-passphrase.c"
+   $55 = $j; //@line 23 "xkcd-passphrase.c"
+   $56 = (($55) + 1)|0; //@line 23 "xkcd-passphrase.c"
+   $j = $56; //@line 23 "xkcd-passphrase.c"
   }
-  $53 = HEAP8[560>>0]|0; //@line 38 "xkcd-passphrase.c"
-  $54 = $passwordLength; //@line 38 "xkcd-passphrase.c"
-  $55 = (($54) + 1)|0; //@line 38 "xkcd-passphrase.c"
-  $passwordLength = $55; //@line 38 "xkcd-passphrase.c"
-  $56 = $0; //@line 38 "xkcd-passphrase.c"
-  $57 = (($56) + ($54)|0); //@line 38 "xkcd-passphrase.c"
-  HEAP8[$57>>0] = $53; //@line 38 "xkcd-passphrase.c"
-  $58 = $i; //@line 18 "xkcd-passphrase.c"
-  $59 = (($58) + 1)|0; //@line 18 "xkcd-passphrase.c"
-  $i = $59; //@line 18 "xkcd-passphrase.c"
+  $57 = HEAP8[560>>0]|0; //@line 36 "xkcd-passphrase.c"
+  $58 = $passwordLength; //@line 36 "xkcd-passphrase.c"
+  $59 = (($58) + 1)|0; //@line 36 "xkcd-passphrase.c"
+  $passwordLength = $59; //@line 36 "xkcd-passphrase.c"
+  $60 = $0; //@line 36 "xkcd-passphrase.c"
+  $61 = (($60) + ($58)|0); //@line 36 "xkcd-passphrase.c"
+  HEAP8[$61>>0] = $57; //@line 36 "xkcd-passphrase.c"
+  $62 = $i; //@line 18 "xkcd-passphrase.c"
+  $63 = (($62) + 1)|0; //@line 18 "xkcd-passphrase.c"
+  $i = $63; //@line 18 "xkcd-passphrase.c"
  }
- $60 = $passwordLength; //@line 41 "xkcd-passphrase.c"
- $61 = (($60) - 1)|0; //@line 41 "xkcd-passphrase.c"
- STACKTOP = sp;return ($61|0); //@line 41 "xkcd-passphrase.c"
+ $64 = $passwordLength; //@line 39 "xkcd-passphrase.c"
+ $65 = (($64) - 1)|0; //@line 39 "xkcd-passphrase.c"
+ STACKTOP = sp;return ($65|0); //@line 39 "xkcd-passphrase.c"
 }
 function ___errno_location() {
  var $$0 = 0, $0 = 0, $1 = 0, $2 = 0, $3 = 0, $4 = 0, label = 0, sp = 0;
@@ -2730,82 +2739,6 @@ function ___errno_location() {
   $4 = HEAP32[$3>>2]|0;
   $$0 = $4;
  }
- return ($$0|0);
-}
-function _strlen($s) {
- $s = $s|0;
- var $$0 = 0, $$01$lcssa = 0, $$014 = 0, $$1$lcssa = 0, $$lcssa20 = 0, $$pn = 0, $$pn15 = 0, $$pre = 0, $0 = 0, $1 = 0, $10 = 0, $11 = 0, $12 = 0, $13 = 0, $14 = 0, $15 = 0, $16 = 0, $17 = 0, $18 = 0, $19 = 0;
- var $2 = 0, $20 = 0, $21 = 0, $3 = 0, $4 = 0, $5 = 0, $6 = 0, $7 = 0, $8 = 0, $9 = 0, $w$0 = 0, $w$0$lcssa = 0, label = 0, sp = 0;
- sp = STACKTOP;
- $0 = $s;
- $1 = $0 & 3;
- $2 = ($1|0)==(0);
- L1: do {
-  if ($2) {
-   $$01$lcssa = $s;
-   label = 4;
-  } else {
-   $$014 = $s;$21 = $0;
-   while(1) {
-    $3 = HEAP8[$$014>>0]|0;
-    $4 = ($3<<24>>24)==(0);
-    if ($4) {
-     $$pn = $21;
-     break L1;
-    }
-    $5 = ((($$014)) + 1|0);
-    $6 = $5;
-    $7 = $6 & 3;
-    $8 = ($7|0)==(0);
-    if ($8) {
-     $$01$lcssa = $5;
-     label = 4;
-     break;
-    } else {
-     $$014 = $5;$21 = $6;
-    }
-   }
-  }
- } while(0);
- if ((label|0) == 4) {
-  $w$0 = $$01$lcssa;
-  while(1) {
-   $9 = HEAP32[$w$0>>2]|0;
-   $10 = (($9) + -16843009)|0;
-   $11 = $9 & -2139062144;
-   $12 = $11 ^ -2139062144;
-   $13 = $12 & $10;
-   $14 = ($13|0)==(0);
-   $15 = ((($w$0)) + 4|0);
-   if ($14) {
-    $w$0 = $15;
-   } else {
-    $$lcssa20 = $9;$w$0$lcssa = $w$0;
-    break;
-   }
-  }
-  $16 = $$lcssa20&255;
-  $17 = ($16<<24>>24)==(0);
-  if ($17) {
-   $$1$lcssa = $w$0$lcssa;
-  } else {
-   $$pn15 = $w$0$lcssa;
-   while(1) {
-    $18 = ((($$pn15)) + 1|0);
-    $$pre = HEAP8[$18>>0]|0;
-    $19 = ($$pre<<24>>24)==(0);
-    if ($19) {
-     $$1$lcssa = $18;
-     break;
-    } else {
-     $$pn15 = $18;
-    }
-   }
-  }
-  $20 = $$1$lcssa;
-  $$pn = $20;
- }
- $$0 = (($$pn) - ($0))|0;
  return ($$0|0);
 }
 function _malloc($bytes) {
@@ -6409,6 +6342,7 @@ function processWordList (wordList) {
 		cachedWordLists[k]	= {
 			buffer: Module._malloc(wordList.length * 4),
 			length: wordList.length,
+			lengthsBuffer: Module._malloc(wordList.length * 4),
 			maxWordLength: wordList.reduce(function (a, b) {
 				return Math.max(a, b.length);
 			}, 0)
@@ -6423,6 +6357,15 @@ function processWordList (wordList) {
 				})).buffer
 			),
 			cachedWordLists[k].buffer
+		);
+
+		Module.writeArrayToMemory(
+			new Uint8Array(
+				new Uint32Array(wordList.map(function (s) {
+					return s.length;
+				})).buffer
+			),
+			cachedWordLists[k].lengthsBuffer
 		);
 	}
 
@@ -6466,6 +6409,7 @@ var xkcdPassphrase	= {
 				numWords,
 				randomValuesBuffer,
 				wordListData.buffer,
+				wordListData.lengthsBuffer,
 				wordListData.length,
 				wordListData.maxWordLength
 			);
@@ -6497,5 +6441,8 @@ if (isNode) {
 else {
 	self.xkcdPassphrase	= xkcdPassphrase;
 }
+
+
+}());
 
 //# sourceMappingURL=xkcd-passphrase.debug.js.map

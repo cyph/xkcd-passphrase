@@ -1,5 +1,4 @@
 #include <stdint.h>
-#include <string.h>
 
 char space			= 32;
 double maxUint32	= UINT32_MAX;
@@ -10,17 +9,16 @@ long generate (
 	long numWords,
 	uint32_t randomValues[],
 	char* wordList[],
+	long wordLengths[],
 	long wordListLength,
 	long maxWordLength
 ) {
 	long passwordLength	= 0;
 
 	for (long i = 0 ; i < numWords ; ++i) {
-		char* word	= wordList[
-			(long) (randomValues[i] / maxUint32 * wordListLength)
-		];
-
-		size_t wordLength	= strlen(word);
+		long index		= randomValues[i] / maxUint32 * wordListLength;
+		char* word		= wordList[index];
+		long wordLength	= wordLengths[index];
 
 		for (long j = 0 ; j < maxWordLength ; ++j) {
 			passwordLength += 2;
