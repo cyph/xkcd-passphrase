@@ -5,9 +5,7 @@ all:
 	cp pre.js tmp/pre.js
 	echo >> tmp/pre.js
 
-	curl -s https://raw.githubusercontent.com/jedisct1/libsodium.js/9a8b4f9/wrapper/wrap-template.js \
-		| tr '\n' ' ' | perl -pe 's/\s+/ /g' | perl -pe 's/.*(function memzero.*?)\s+function.*/\1/g' \
-	>> tmp/pre.js
+	curl -s https://raw.githubusercontent.com/cyph/sodiumutil/master/dist/sodiumutil.js >> tmp/pre.js
 
 	node -e ' \
 		var fs = require("fs"); \

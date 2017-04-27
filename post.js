@@ -9,11 +9,11 @@ var cachedWordLists	= {};
 function dataFree (buffer, dataToClear) {
 	try {
 		if (typeof dataToClear === 'number') {
-			memzero(new Uint8Array(Module.HEAPU8.buffer, buffer, dataToClear));
+			sodiumUtil.memzero(new Uint8Array(Module.HEAPU8.buffer, buffer, dataToClear));
 		}
 		else if (dataToClear) {
-			memzero(new Uint8Array(Module.HEAPU8.buffer, buffer, dataToClear.length));
-			memzero(dataToClear);
+			sodiumUtil.memzero(new Uint8Array(Module.HEAPU8.buffer, buffer, dataToClear.length));
+			sodiumUtil.memzero(dataToClear);
 		}
 
 		Module._free(buffer);
