@@ -7,20 +7,12 @@ all:
 
 	curl -s https://raw.githubusercontent.com/cyph/sodiumutil/master/dist/sodiumutil.js >> tmp/pre.js
 
-	node -e ' \
-		var fs = require("fs"); \
-		fs.writeFileSync("tmp/post.js", fs.readFileSync("post.js"). \
-			toString(). \
-			replace("DEFAULT_WORD_LIST", JSON.stringify( \
-				fs.readFileSync("dictionary.txt").toString().trim().split("\n").slice(2) \
-			)) \
-		); \
-	'
+	node -e 'fs.writeFileSync("tmp/post.js", fs.readFileSync("post.js").toString().replace("DEFAULT_WORD_LIST", JSON.stringify(fs.readFileSync("dictionary.txt").toString().trim().split("\n").slice(2))))'
 
 	bash -c ' \
 		args="$$(echo " \
 			--memory-init-file 0 \
-			-s TOTAL_MEMORY=5242880 -s TOTAL_STACK=2621440 \
+			-s TOTAL_MEMORY=16777216 -s TOTAL_STACK=8388608 \
 			-s NO_DYNAMIC_EXECUTION=1 -s RUNNING_JS_OPTS=1 -s ASSERTIONS=0 \
 			-s AGGRESSIVE_VARIABLE_ELIMINATION=1 -s ALIASING_FUNCTION_POINTERS=1 \
 			-s FUNCTION_POINTER_ALIGNMENT=1 -s DISABLE_EXCEPTION_CATCHING=1 \
