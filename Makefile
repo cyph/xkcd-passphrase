@@ -28,6 +28,8 @@ all:
 		bash -c "emcc -O0 -g4 $$args -o dist/xkcd-passphrase.debug.js"; \
 	'
 
+	sed -i 's|require(|eval("require")(|g' dist/xkcd-passphrase.js
+
 	cat dist/xkcd-passphrase.js | perl -pe 's/defaultWordList:.*?],/defaultWordList: \[\],/g' \
 		> dist/xkcd-passphrase.slim.js
 

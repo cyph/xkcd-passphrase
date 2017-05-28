@@ -1,9 +1,5 @@
 ;
 
-if (isNode) {
-	crypto	= require('crypto');
-}
-
 var cachedWordLists	= {};
 
 function dataFree (buffer, dataToClear) {
@@ -23,7 +19,7 @@ function dataFree (buffer, dataToClear) {
 
 function getRandomValues (n) {
 	return isNode ?
-		new Uint8Array(crypto.randomBytes(n).buffer) :
+		new Uint8Array(nodeCrypto.randomBytes(n).buffer) :
 		crypto.getRandomValues(new Uint8Array(n))
 	;
 }
