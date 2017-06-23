@@ -1,6 +1,6 @@
 {
 	"name": "xkcd-passphrase",
-	"version": "2.0.1",
+	"version": "3.0.0",
 	"description": "Passphrase generator inspired by http://xkcd.com/936",
 	"main": "dist/xkcd-passphrase.js",
 	"types": "./xkcd-passphrase.d.ts",
@@ -14,7 +14,9 @@
 		"password",
 		"passphrase",
 		"xkcd",
-		"memorable"
+		"memorable",
+		"asm.js",
+		"webassembly"
 	],
 	"author": "Cyph, Inc. <xkcd-passphrase@cyph.com> (https://github.com/cyph)",
 	"license": "BSD-2-Clause",

@@ -74,7 +74,7 @@ var xkcdPassphrase	= {
 	defaultBits: 128,
 	defaultWordList: DEFAULT_WORD_LIST,
 
-	generate: function (numBits, wordList) {
+	generate: function (numBits, wordList) { return moduleReady.then(function () {
 		if (!numBits) {
 			numBits		= xkcdPassphrase.defaultBits;
 		}
@@ -83,9 +83,9 @@ var xkcdPassphrase	= {
 			Math.round(numBits / Math.log2(processWordList(wordList).length)),
 			wordList
 		);
-	},
+	}); },
 
-	generateWithWordCount: function (numWords, wordList) {
+	generateWithWordCount: function (numWords, wordList) { return moduleReady.then(function () {
 		if (!numWords) {
 			throw new Error('Word count must be specified.');
 		}
@@ -122,7 +122,7 @@ var xkcdPassphrase	= {
 			dataFree(password, passwordLength);
 			dataFree(randomValuesBuffer, randomValues);
 		}
-	}
+	}); }
 };
 
 
