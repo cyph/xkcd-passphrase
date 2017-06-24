@@ -70,11 +70,18 @@ function processWordList (wordList) {
 }
 
 
+var Module;
+
+var initiated	= moduleReady.then(function () {
+	Module	= finalModule;
+});
+
+
 var xkcdPassphrase	= {
 	defaultBits: 128,
 	defaultWordList: DEFAULT_WORD_LIST,
 
-	generate: function (numBits, wordList) { return moduleReady.then(function () {
+	generate: function (numBits, wordList) { return initiated.then(function () {
 		if (!numBits) {
 			numBits		= xkcdPassphrase.defaultBits;
 		}
@@ -85,7 +92,7 @@ var xkcdPassphrase	= {
 		);
 	}); },
 
-	generateWithWordCount: function (numWords, wordList) { return moduleReady.then(function () {
+	generateWithWordCount: function (numWords, wordList) { return initiated.then(function () {
 		if (!numWords) {
 			throw new Error('Word count must be specified.');
 		}

@@ -29,27 +29,20 @@ all:
 
 	cp tmp/pre.js tmp/xkcd-passphrase.js
 	echo " \
-		var moduleReady; \
-		if (typeof WebAssembly !== 'undefined') { \
+		var finalModule; \
+		var moduleReady = Promise.resolve().then(function () { \
 	" >> tmp/xkcd-passphrase.js
 	cat tmp/xkcd-passphrase.wasm.js >> tmp/xkcd-passphrase.js
 	echo " \
-			moduleReady = new Promise(function (resolve) { \
-				var interval = setInterval(function () { \
-					if (!Module.usingWasm) { \
-						return; \
-					} \
-					clearInterval(interval); \
-					resolve(); \
-				}, 50); \
+			return Module['wasmReady'].then(function () { \
+				finalModule = Module; \
 			});\
-		} \
-		else { \
+		}).catch(function () { \
 	" >> tmp/xkcd-passphrase.js
 	cat tmp/xkcd-passphrase.asm.js >> tmp/xkcd-passphrase.js
 	echo " \
-			moduleReady = Promise.resolve(); \
-		} \
+			finalModule = Module; \
+		}); \
 	" >> tmp/xkcd-passphrase.js
 	cat tmp/post.js >> tmp/xkcd-passphrase.js
 
