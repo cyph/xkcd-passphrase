@@ -52,3 +52,16 @@ itself has not yet been audited. Use at your own risk.
 		console.log(await xkcdPassphrase.generateWithWordCount(4));
 		/* sombrero eschews landlocked complete */
 	})();
+
+## Changelog
+
+Breaking changes in major versions:
+
+3.0.0:
+
+* As part of upgrading from asm.js to WebAssembly (with asm.js included as a fallback),
+the API is fully asynchronous.
+
+2.0.0:
+
+* Module bundling support.
