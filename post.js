@@ -139,8 +139,9 @@ return xkcdPassphrase;
 }());
 
 
-if (isNode) {
-	module.exports		= xkcdPassphrase;
+if (typeof module !== 'undefined' && module.exports) {
+	xkcdPassphrase.xkcdPassphrase	= xkcdPassphrase;
+	module.exports					= xkcdPassphrase;
 }
 else {
 	self.xkcdPassphrase	= xkcdPassphrase;
