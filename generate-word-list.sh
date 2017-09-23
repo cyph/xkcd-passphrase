@@ -15,6 +15,8 @@
 		curl -s https://en.wikipedia.org/wiki/List_of_companies_named_after_people;
 		curl -s https://en.wikipedia.org/wiki/List_of_S%26P_500_companies;
 	} |
+		sed 's|, Incorporated||g' |
+		sed 's| Incorporated||g' |
 		sed 's|, Inc\.||g' |
 		sed 's| Inc\.||g' |
 		sed 's|, Inc||g' |
