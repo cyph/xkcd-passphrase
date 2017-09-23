@@ -6021,12 +6021,12 @@ married
 marriott
 marrow
 marry
+mars
 marsh
 marsha
 marshall
 marshland
 marshy
-marsorporated
 marsupial
 marta
 martha
@@ -8473,7 +8473,7 @@ salami
 salaried
 salary
 salazar
-saleenorporated
+saleen
 salinas
 saline
 sallie
@@ -8932,7 +8932,7 @@ shudder
 shuffle
 shuffling
 shun
-shureorporated
+shure
 shush
 shut
 shuttle
