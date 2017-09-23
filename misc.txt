@@ -85,6 +85,7 @@ david
 ddos
 death
 deep
+deepweb
 defcon
 diet
 dinosaur
@@ -92,6 +93,7 @@ disney
 doctor
 dog
 dope
+dragnet
 dragon
 duck
 dumbledore
@@ -195,6 +197,7 @@ lucille
 lue
 madonna
 make
+man-bear-pig
 marge
 mass
 maybe
@@ -308,11 +311,13 @@ tor
 towelie
 tribble
 triceratops
+trustless
 turkey
 twitter
 uncle
 united
 uss
+vandelay
 velociraptor
 visa
 vista
@@ -332,4 +337,5 @@ windows
 worf
 xmas
 youtube
+zero-knowledge
 zoidberg

@@ -8,16 +8,12 @@
 	curl -s https://www.eff.org/files/2016/09/08/eff_short_wordlist_2_0.txt | awk '{print $2}';
 	curl -s https://deron.meranda.us/data/census-derived-all-first.txt | head -n1500 | awk '{print $1}';
 	curl -s https://www.state.gov/misc/list/ | grep -P '^\s*<a href="http://www\.state\.gov/p' | perl -pe 's/\s*<//g' | grep -oP '>[A-Za-z- ]+' | sed 's|>||g' | sort | uniq | grep -v ' ';
-	node -e '(async () => console.log(require("xlsx").read(await require("node-fetch")("https://www2.census.gov/topics/genealogy/2000surnames/Top1000.xls").then(o => o.buffer())).Strings.slice(11, -1).map(o => o.t && o.t.toLowerCase().trim()).filter(s => s.match(/^[a-z]/)).join("\n")))()';
+	node -e '(async () => console.log(require("xlsx").read(await require("node-fetch")("https://www2.census.gov/topics/genealogy/2000surnames/Top1000.xls").then(o => o.buffer())).Strings.slice(11, -1).map(o => o.t && o.t.toLowerCase().trim()).filter(s => !s.match(/[^a-z-]/)).slice(0, 600).join("\n")))()';
 	{
 		curl -s https://en.wikipedia.org/wiki/Wikipedia:Multiyear_ranking_of_most_viewed_pages;
-		curl -s https://en.wikipedia.org/wiki/Wikipedia:Vital_articles;
-		curl -s https://en.wikipedia.org/wiki/Wikipedia:5000;
 		curl -s https://simple.wikipedia.org/wiki/List_of_United_States_cities_by_population;
 		curl -s https://en.wikipedia.org/wiki/List_of_companies_named_after_people;
-		curl -s https://en.wikipedia.org/wiki/List_of_multinational_corporations;
 		curl -s https://en.wikipedia.org/wiki/List_of_S%26P_500_companies;
-		curl -s https://en.wikipedia.org/wiki/List_of_one-word_stage_names;
 	} |
 		sed 's|, Inc\.||g' |
 		sed 's| Inc\.||g' |
