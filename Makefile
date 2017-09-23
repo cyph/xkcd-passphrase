@@ -7,7 +7,7 @@ all:
 
 	curl -s https://raw.githubusercontent.com/cyph/sodiumutil/master/dist/sodiumutil.js >> tmp/pre.js
 
-	node -e 'fs.writeFileSync("tmp/post.js", fs.readFileSync("post.js").toString().replace("DEFAULT_WORD_LIST", JSON.stringify(fs.readFileSync("dictionary.txt").toString().trim().split("\n").slice(2))))'
+	node -e 'fs.writeFileSync("tmp/post.js", fs.readFileSync("post.js").toString().replace("DEFAULT_WORD_LIST", JSON.stringify(fs.readFileSync("word-list.txt").toString().trim().split("\n").slice(2))))'
 
 	bash -c ' \
 		args="$$(echo " \
