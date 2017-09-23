@@ -6,7 +6,9 @@
 	curl -s https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt | awk '{print $2}';
 	curl -s https://www.eff.org/files/2016/09/08/eff_short_wordlist_1.txt | awk '{print $2}';
 	curl -s https://www.eff.org/files/2016/09/08/eff_short_wordlist_2_0.txt | awk '{print $2}';
+	curl -s https://deron.meranda.us/data/census-derived-all-first.txt | head -n1500 | awk '{print $1}';
 	curl -s https://www.state.gov/misc/list/ | grep -P '^\s*<a href="http://www\.state\.gov/p' | perl -pe 's/\s*<//g' | grep -oP '>[A-Za-z- ]+' | sed 's|>||g' | sort | uniq | grep -v ' ';
+	node -e '(async () => console.log(require("xlsx").read(await require("node-fetch")("https://www2.census.gov/topics/genealogy/2000surnames/Top1000.xls").then(o => o.buffer())).Strings.slice(11, -1).map(o => o.t && o.t.toLowerCase().trim()).filter(s => s.match(/^[a-z]/)).join("\n")))()';
 	{
 		curl -s https://en.wikipedia.org/wiki/Wikipedia:Multiyear_ranking_of_most_viewed_pages;
 		curl -s https://en.wikipedia.org/wiki/Wikipedia:Vital_articles;
