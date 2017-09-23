@@ -19,20 +19,20 @@ itself has not yet been audited. Use at your own risk.
 
 	(async () => {
 		console.log(await xkcdPassphrase.generate());
-		/* elusive saturday require perennial narcissism miyavi cinema facelift flaccid */
+		/* collision pest numerous baboon tarnish aimee airgas swivel navigate */
 
 		console.log(await xkcdPassphrase.generate(256));
 		/*
-		 * crabgrass filter rhapsody pamphlet down mustard anri dwele skimpily ribbon pendulum
-		 * empower darling savor landmarks superior surround rebuild vaiyapuri
+		 * provolone email darkish symptom unending bridges bianca carport culminate vacancy
+		 * rehydrate disjoin rotten cornball mousiness cephalon appear buddhism vanity
 		 */
 
 		console.log(await xkcdPassphrase.generate(512));
 		/*
-		 * atonable exclusive reclaim fourth fry segregator whisking subheader stingray unsavory
-		 * viacom capably dazzling sunmi cactus monument omissible opt spooky distaste supremacy
-		 * purist academy baking ascent engine settle imperialism huntsman flyable 6 sterility
-		 * reclaim napkin sliced outboard muscle erase
+		 * minneapolis detonate headsman jacob lumber custodian glimmer silt lipton carded
+		 * avalanche shady launder issueless freebee maude unedited spearhead nickname fleshed
+		 * dissuade rudolph spouse lupe babolat severity chapman liquefy skunk humongous chatroom
+		 * eatable kay cypress olson found emergency tree
 		 */ 
 
 		console.log(await xkcdPassphrase.generate(32, [
@@ -50,7 +50,7 @@ itself has not yet been audited. Use at your own risk.
 		/* that awful that custom list word list that custom custom */ 
 
 		console.log(await xkcdPassphrase.generateWithWordCount(4));
-		/* grime open wynonna andeavor */
+		/* oscar jury email tugboat */
 	})();
 
 ## Changelog
