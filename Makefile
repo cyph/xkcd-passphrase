@@ -29,19 +29,22 @@ all:
 
 	cp tmp/pre.js tmp/xkcd-passphrase.js
 	echo " \
-		var finalModule; \
-		var moduleReady = Promise.resolve().then(function () { \
+		var Module = {}; \
+		var _Module = Module; \
+		Module.ready = new Promise(function (resolve, reject) { \
+			var Module = _Module; \
+			Module.onAbort = reject; \
+			Module.onRuntimeInitialized = resolve; \
 	" >> tmp/xkcd-passphrase.js
 	cat tmp/xkcd-passphrase.wasm.js >> tmp/xkcd-passphrase.js
 	echo " \
-			return Module['wasmReady'].then(function () { \
-				finalModule = Module; \
-			});\
 		}).catch(function () { \
+			var Module = _Module; \
+			Module.onAbort = undefined; \
+			Module.onRuntimeInitialized = undefined; \
 	" >> tmp/xkcd-passphrase.js
 	cat tmp/xkcd-passphrase.asm.js >> tmp/xkcd-passphrase.js
 	echo " \
-			finalModule = Module; \
 		}); \
 	" >> tmp/xkcd-passphrase.js
 	cat tmp/post.js >> tmp/xkcd-passphrase.js

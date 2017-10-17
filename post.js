@@ -70,11 +70,7 @@ function processWordList (wordList) {
 }
 
 
-var Module;
-
-var initiated	= moduleReady.then(function () {
-	Module	= finalModule;
-});
+var initiated	= Module.ready;
 
 
 var xkcdPassphrase	= {
