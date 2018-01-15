@@ -1,5 +1,10 @@
 ;
 
+function writeArrayToMemory (array, buffer) {
+	Module.HEAP8.set(array, buffer);
+}
+
+
 var cachedWordLists	= {};
 
 function dataFree (buffer, dataToClear) {
@@ -45,7 +50,7 @@ function processWordList (wordList) {
 			}, 0)
 		};
 
-		Module.writeArrayToMemory(
+		writeArrayToMemory(
 			new Uint8Array(
 				new Uint32Array(wordList.map(function (s) {
 					var buffer	= Module._malloc(s.length);
@@ -56,7 +61,7 @@ function processWordList (wordList) {
 			cachedWordLists[k].buffer
 		);
 
-		Module.writeArrayToMemory(
+		writeArrayToMemory(
 			new Uint8Array(
 				new Uint32Array(wordList.map(function (s) {
 					return s.length;
@@ -101,7 +106,7 @@ var xkcdPassphrase	= {
 		var randomValues		= getRandomValues(numWords * 4);
 		var randomValuesBuffer	= Module._malloc(randomValues.length);
 
-		Module.writeArrayToMemory(randomValues, randomValuesBuffer);
+		writeArrayToMemory(randomValues, randomValuesBuffer);
 
 		try {
 			var returnValue	= Module._generate(
