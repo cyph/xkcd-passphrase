@@ -19,6 +19,8 @@ all:
 			-s RESERVED_FUNCTION_POINTERS=8 -s NO_FILESYSTEM=1 \
 			xkcd-passphrase.c \
 			-s EXPORTED_FUNCTIONS=\"[ \
+				'"'"'_free'"'"', \
+				'"'"'_malloc'"'"', \
 				'"'"'_generate'"'"' \
 			]\" \
 		" | perl -pe "s/\s+/ /g" | perl -pe "s/\[ /\[/g" | perl -pe "s/ \]/\]/g")"; \
