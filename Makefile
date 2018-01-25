@@ -19,6 +19,10 @@ all:
 			-s DISABLE_EXCEPTION_CATCHING=1 \
 			-s NO_FILESYSTEM=1 \
 			xkcd-passphrase.c \
+			-s EXTRA_EXPORTED_RUNTIME_METHODS=\"[ \
+				'"'"'Pointer_stringify'"'"', \
+				'"'"'writeAsciiToMemory'"'"' \
+			]\" \
 			-s EXPORTED_FUNCTIONS=\"[ \
 				'"'"'_free'"'"', \
 				'"'"'_malloc'"'"', \
