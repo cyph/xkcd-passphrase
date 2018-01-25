@@ -19,7 +19,9 @@ function dataFree (buffer, dataToClear) {
 
 		Module._free(buffer);
 	}
-	catch (_) {}
+	catch (err) {
+		setTimeout(function () { throw err; }, 0);
+	}
 }
 
 function getRandomValues (n) {
