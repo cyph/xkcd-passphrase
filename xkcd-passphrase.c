@@ -1,5 +1,9 @@
 #include <stdint.h>
 
+long asm_test () {
+	return 0;
+}
+
 long generate (
 	char password[],
 	long numWords,

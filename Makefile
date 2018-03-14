@@ -24,6 +24,7 @@ all:
 				'"'"'writeAsciiToMemory'"'"' \
 			]\" \
 			-s EXPORTED_FUNCTIONS=\"[ \
+				'"'"'_asm_test'"'"', \
 				'"'"'_free'"'"', \
 				'"'"'_malloc'"'"', \
 				'"'"'_generate'"'"' \
@@ -41,7 +42,15 @@ all:
 		Module.ready = new Promise(function (resolve, reject) { \
 			var Module = _Module; \
 			Module.onAbort = reject; \
-			Module.onRuntimeInitialized = resolve; \
+			Module.onRuntimeInitialized = function () { \
+				try { \
+					Module._asm_test(); \
+					resolve(); \
+				} \
+				catch (err) { \
+					reject(err); \
+				} \
+			}; \
 	" >> tmp/xkcd-passphrase.js
 	cat tmp/xkcd-passphrase.wasm.js >> tmp/xkcd-passphrase.js
 	echo " \
