@@ -18,6 +18,7 @@ all:
 			-s ALIASING_FUNCTION_POINTERS=1 \
 			-s DISABLE_EXCEPTION_CATCHING=1 \
 			-s NO_FILESYSTEM=1 \
+			-s ERROR_ON_UNDEFINED_SYMBOLS=0 \
 			xkcd-passphrase.c \
 			-s EXTRA_EXPORTED_RUNTIME_METHODS=\"[ \
 				'"'"'Pointer_stringify'"'"', \
