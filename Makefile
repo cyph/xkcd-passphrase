@@ -65,7 +65,7 @@ all:
 	" >> tmp/xkcd-passphrase.js
 	cat tmp/post.js >> tmp/xkcd-passphrase.js
 
-	uglifyjs tmp/xkcd-passphrase.js -cmo dist/xkcd-passphrase.js
+	terser tmp/xkcd-passphrase.js -cmo dist/xkcd-passphrase.js
 
 	sed -i 's|use asm||g' dist/xkcd-passphrase.js
 	sed -i 's|require(|eval("require")(|g' dist/xkcd-passphrase.js
