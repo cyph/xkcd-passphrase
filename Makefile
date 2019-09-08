@@ -40,14 +40,13 @@ all:
 	cp tmp/pre.js tmp/xkcd-passphrase.js
 	echo " \
 		var Module = {}; \
-		var _Module = Module; \
 		Module.ready = new Promise(function (resolve, reject) { \
-			var Module = _Module; \
+			var Module = {}; \
 			Module.onAbort = reject; \
 			Module.onRuntimeInitialized = function () { \
 				try { \
 					Module._asm_test(); \
-					resolve(); \
+					resolve(Module); \
 				} \
 				catch (err) { \
 					reject(err); \
@@ -57,12 +56,13 @@ all:
 	cat tmp/xkcd-passphrase.wasm.js >> tmp/xkcd-passphrase.js
 	echo " \
 		}).catch(function () { \
-			var Module = _Module; \
-			Module.onAbort = undefined; \
-			Module.onRuntimeInitialized = undefined; \
+			var Module = {}; \
 	" >> tmp/xkcd-passphrase.js
 	cat tmp/xkcd-passphrase.asm.js >> tmp/xkcd-passphrase.js
 	echo " \
+			return Module; \
+		}).then(function (m) { \
+			Object.keys(m).forEach(function (k) { Module[k] = m[k]; }); \
 		}); \
 	" >> tmp/xkcd-passphrase.js
 	cat tmp/post.js >> tmp/xkcd-passphrase.js
