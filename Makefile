@@ -60,7 +60,10 @@ all:
 	" >> tmp/xkcd-passphrase.js
 	cat tmp/xkcd-passphrase.asm.js >> tmp/xkcd-passphrase.js
 	echo " \
-			return Module; \
+			return new Promise(function (resolve, reject) { \
+				Module.onAbort = reject; \
+				Module.onRuntimeInitialized = function () { resolve(Module); }; \
+			}); \
 		}).then(function (m) { \
 			Object.keys(m).forEach(function (k) { Module[k] = m[k]; }); \
 		}); \
