@@ -22,7 +22,7 @@ all:
 			-s ERROR_ON_UNDEFINED_SYMBOLS=0 \
 			xkcd-passphrase.c \
 			-s EXTRA_EXPORTED_RUNTIME_METHODS=\"[ \
-				'"'"'Pointer_stringify'"'"', \
+				'"'"'UTF8ToString'"'"', \
 				'"'"'writeAsciiToMemory'"'"' \
 			]\" \
 			-s EXPORTED_FUNCTIONS=\"[ \

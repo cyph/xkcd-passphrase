@@ -122,7 +122,7 @@ var xkcdPassphrase	= {
 			);
 
 			if (returnValue > 0) {
-				return Module.Pointer_stringify(password, returnValue);
+				return Module.UTF8ToString(password, returnValue);
 			}
 			else {
 				throw new Error('xkcd passphrase error: ' + returnValue);
